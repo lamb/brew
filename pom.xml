@@ -272,6 +272,7 @@
 						</connector>
 					</connectors>
 					<scanIntervalSeconds>${server.seconds}</scanIntervalSeconds>
+					<webDefaultXml>src/main/resources/etc/webdefault.xml</webDefaultXml>
 				</configuration>
 			</plugin>
 		</plugins>
