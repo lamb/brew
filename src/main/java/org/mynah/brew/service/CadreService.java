@@ -11,30 +11,30 @@ import org.mynah.brew.repository.ICadreRepository;
 public class CadreService {
 
     @Autowired
-    private ICadreRepository CadreRepository;
+    private ICadreRepository cadreRepository;
 
     @Transactional(readOnly = true)
     public List<Cadre> query(Cadre cadre, Class<Cadre> type) {
-        return CadreRepository.query(cadre, type);
+        return cadreRepository.query(cadre, type);
     }
 
     @Transactional
     public int save(Cadre cadre) {
-        return CadreRepository.save(cadre);
+        return cadreRepository.save(cadre);
     }
 
     @Transactional(readOnly = true)
     public Cadre queryForObject(Cadre cadre, Class<Cadre> type) {
-        return CadreRepository.queryForObject(cadre, type);
+        return cadreRepository.queryForObject(cadre, type);
     }
 
     @Transactional
     public int update(Cadre where, Cadre cadre) {
-        return CadreRepository.update(where, cadre);
+        return cadreRepository.update(where, cadre);
     }
 
     @Transactional
     public int delete(Cadre cadre) {
-        return CadreRepository.delete(cadre);
+        return cadreRepository.delete(cadre);
     }
 }
