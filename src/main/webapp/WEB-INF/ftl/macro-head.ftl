@@ -7,10 +7,12 @@
 <meta name="copyright" content="yonyou" />
 <meta name="revised" content="yonyou" />
 <meta http-equiv="Window-target" content="_top" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <link href="${contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="${contextPath}/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet"/>
 <link href="${contextPath}/css/style.css" rel="stylesheet"/>
 <link href="${contextPath}/javascript/prettify/prettify.css" rel="stylesheet"/>
-<link rel="shortcut icon" type="image/png" href="${contextPath}/favicon.ico" />
+<link href="${contextPath}/javascript/ztree/css/demo.css" type="text/css" rel="stylesheet"/>
+<link href="${contextPath}/javascript/ztree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet"/>
+<link href="${contextPath}/favicon.ico" rel="shortcut icon" type="image/png"/>
 </#macro>
