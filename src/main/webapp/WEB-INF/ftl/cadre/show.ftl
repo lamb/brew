@@ -7,7 +7,7 @@
 <meta name="description" content=""/>
 </@head>
 <body>
-${project.id}-${project.name}-${project.abbr}
+${cadre.id}-${cadre.name}
 	<#include "footer.ftl">
 </body>
 </html>
