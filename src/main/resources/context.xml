@@ -81,6 +81,5 @@
 	</bean>
 
 	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor" />
-	<bean class="org.mynah.brew.util.MailSender" />
 
 </beans>
