@@ -20,7 +20,13 @@
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
 
-	<!--<mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/**" /> <bean class="org.mynah.brew.interceptor.SigninInterceptor" /> </mvc:interceptor> </mvc:interceptors> -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="org.mynah.brew.interceptor.SigninInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 	<bean id="ftlViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 		<property name="cache" value="true" />
 		<property name="suffix" value=".ftl" />
