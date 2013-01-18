@@ -5,10 +5,14 @@
 <@head title="${appTitle}">
 <meta name="keywords" content="${metaKeywords}"/>
 <meta name="description" content=""/>
+<link href="${contextPath}/javascript/ztree/css/demo.css" type="text/css" rel="stylesheet"/>
+<link href="${contextPath}/javascript/ztree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet"/>
 </@head>
 <body>
 	<ul id="treeDemo" class="ztree"></ul>
 	<#include "footer.ftl">
+	<script type="text/javascript" src="${contextPath}/javascript/ztree/js/jquery.ztree.core-3.5.js"></script>
+	<script type="text/javascript" src="${contextPath}/javascript/ztree/js/jquery.ztree.excheck-3.5.js"></script>
 	<SCRIPT type="text/javascript">
 	var setting = {
 		check: {
