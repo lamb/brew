@@ -13,8 +13,8 @@
 						<li><a href="${contextPath}/signout">退出</a></li>
 					<#else>
 					<form id="signForm" class="navbar-form pull-right" action="${contextPath}/signin" method="post">
-		              <input class="span2" type="text" name="email" placeholder="Email" rel="popover" data-placement="bottom" />
-		              <input class="span2" type="password" name="password" placeholder="Password" rel="popover" data-placement="bottom" />
+		              <input class="span2" type="text" name="username" placeholder="用户名" rel="popover" data-placement="bottom" />
+		              <input class="span2" type="password" name="password" placeholder="密码" rel="popover" data-placement="bottom" />
 		              <input type="submit" class="btn" value="登陆" />
 		            </form>
 		            </#if>
