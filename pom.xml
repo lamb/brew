@@ -28,7 +28,7 @@
 		<version.standard.taglibs>1.1.2</version.standard.taglibs>
 		<version.servlet>2.5</version.servlet>
 		<version.mysql-connector-java>5.1.21</version.mysql-connector-java>
-		<version.druid>0.2.9</version.druid>
+		<version.druid>0.2.11</version.druid>
 
 		<!-- Test -->
 		<version.junit>4.8.2</version.junit>
