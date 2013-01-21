@@ -212,11 +212,17 @@
 	</dependencies>
 
 	<build>
+		<filters>
+			<filter>src/main/resources/properties/jdbc-${environment}.properties</filter>
+		</filters>
+
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
 				<excludes>
-					<exclude>**/etc/</exclude>
+					<exclude>**/etc/**</exclude>
+					<exclude>**/properties/**</exclude>
 				</excludes>
 			</resource>
 		</resources>
@@ -278,6 +284,30 @@
 		</plugins>
 		<finalName>${finalName}-${project.version}</finalName>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>development</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<environment>development</environment>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<environment>test</environment>
+			</properties>
+		</profile>
+		<profile>
+			<id>production</id>
+			<properties>
+				<environment>production</environment>
+			</properties>
+		</profile>
+	</profiles>
 
 	<repositories>
 		<repository>
