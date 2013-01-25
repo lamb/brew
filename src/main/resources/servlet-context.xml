@@ -14,18 +14,20 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
-	<context:component-scan base-package="org.mynah.brew.controller">
-		<context:include-filter expression="org.springframework.stereotype.Controller" type="annotation" />
+	<context:component-scan base-package="org.mynah.brew">
+		<context:include-filter expression="org.aspectj.lang.annotation.Aspect" type="annotation" />
 	</context:component-scan>
+
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
-
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<bean class="org.mynah.brew.interceptor.SigninInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
+
+	<aop:aspectj-autoproxy />
 
 	<bean id="ftlViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 		<property name="cache" value="true" />

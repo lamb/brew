@@ -13,10 +13,6 @@
 
 	<tx:annotation-driven transaction-manager="txManager" />
 
-	<context:component-scan base-package="org.mynah.brew">
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-	</context:component-scan>
-
 	<context:property-placeholder location="classpath:jdbc.properties" />
 
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
