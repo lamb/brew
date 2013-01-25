@@ -17,17 +17,8 @@
 		<server.port>8888</server.port>
 		<server.seconds>20</server.seconds>
 
-		<!-- hibernate-validator version -->
-		<version.hibernate-validator>4.3.0.Final</version.hibernate-validator>
-
 		<!-- Spring version -->
 		<version.spring>3.1.4.RELEASE</version.spring>
-
-		<!-- Third Party dependencies -->
-		<version.standard.taglibs>1.1.2</version.standard.taglibs>
-		<version.servlet>2.5</version.servlet>
-		<version.mysql-connector-java>5.1.21</version.mysql-connector-java>
-		<version.druid>0.2.11</version.druid>
 
 		<!-- Test -->
 		<version.junit>4.8.2</version.junit>
@@ -37,21 +28,21 @@
 		<!-- Logging -->
 		<version.org.slf4j>1.6.1</version.org.slf4j>
 		<version.log4j>1.2.16</version.log4j>
+
+		<!-- Third Party dependencies -->
+		<version.servlet>2.5</version.servlet>
+		<version.standard.taglibs>1.1.2</version.standard.taglibs>
+		<version.hibernate-validator>4.3.0.Final</version.hibernate-validator>
+		<version.mysql-connector-java>5.1.21</version.mysql-connector-java>
+		<version.druid>0.2.11</version.druid>
+		<version.mail>1.4.5</version.mail>
+		<version.freemarker>2.3.19</version.freemarker>
+		<version.cglib>2.2.2</version.cglib>
+		<version.jackson-mapper-asl>1.9.10</version.jackson-mapper-asl>
+		<version.aspectjweaver>1.7.1</version.aspectjweaver>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>${version.hibernate-validator}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>${version.servlet}</version>
-			<scope>provided</scope>
-		</dependency>
 
 		<!-- Spring dependencies -->
 		<dependency>
@@ -115,23 +106,6 @@
 			<version>${version.spring}</version>
 		</dependency>
 
-		<!-- Third Party dependencies -->
-		<dependency>
-			<groupId>taglibs</groupId>
-			<artifactId>standard</artifactId>
-			<version>${version.standard.taglibs}</version>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${version.mysql-connector-java}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid</artifactId>
-			<version>${version.druid}</version>
-		</dependency>
-
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -175,25 +149,57 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Third Party dependencies -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${version.servlet}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>${version.standard.taglibs}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${version.hibernate-validator}</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${version.mysql-connector-java}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>${version.druid}</version>
+		</dependency>
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
-			<version>1.4.5</version>
+			<version>${version.mail}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
-			<version>2.3.19</version>
+			<version>${version.freemarker}</version>
 		</dependency>
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
-			<version>2.2.2</version>
+			<version>${version.cglib}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.10</version>
+			<version>${version.jackson-mapper-asl}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${version.aspectjweaver}</version>
 		</dependency>
 	</dependencies>
 
