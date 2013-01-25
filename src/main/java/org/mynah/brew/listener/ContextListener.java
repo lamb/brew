@@ -3,11 +3,13 @@ package org.mynah.brew.listener;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class ContextListener implements ServletContextListener {
 
-    private static Logger log = Logger.getLogger(ContextListener.class);
+    /** Logger available to subclasses */
+    protected final Log logger = LogFactory.getLog(getClass());
 
     private ServletContext context;
 
@@ -23,7 +25,7 @@ public class ContextListener implements ServletContextListener {
 
     private void setAttribute(String key, Object value) {
         context.setAttribute(key, value);
-        log.info("ServletContext add " + key + ":" + value);
+        logger.info("ServletContext add " + key + ":" + value);
     }
 
     @Override

@@ -3,7 +3,8 @@ package org.mynah.brew.jdbc;
 import java.beans.PropertyDescriptor;
 import java.util.List;
 import javax.sql.DataSource;
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.PropertyAccessorFactory;
@@ -18,7 +19,9 @@ import org.springframework.jdbc.support.KeyHolder;
 
 public class Template extends JdbcTemplate {
 
-    private static Logger log = Logger.getLogger(Template.class);
+    /** Logger available to subclasses */
+    protected final Log logger = LogFactory.getLog(getClass());
+    
     public static final String CLASS = "class";
     public static final String SPACE = " ";
     public static final String LEFT_BRACKET = "(";
@@ -122,7 +125,7 @@ public class Template extends JdbcTemplate {
         }
         StringBuffer sql = new StringBuffer();
         if (count <= 0) {
-            log.error("no values for update");
+            logger.error("no values for update");
             return 0;
         } else {
             sql.append(top.toString().substring(0, top.lastIndexOf(COMMA)));
@@ -168,7 +171,7 @@ public class Template extends JdbcTemplate {
         }
         StringBuffer sql = new StringBuffer();
         if (count <= 0) {
-            log.error("no values for insert");
+            logger.error("no values for insert");
             return 0;
         } else {
             sql.append(top.toString().substring(0, top.lastIndexOf(COMMA))).append(RIGHT_BRACKET);
