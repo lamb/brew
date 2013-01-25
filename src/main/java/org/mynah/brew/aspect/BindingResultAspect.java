@@ -13,9 +13,9 @@ public class BindingResultAspect {
     protected final Log logger = LogFactory.getLog(getClass());
 
     @Before("execution(* org.mynah.brew.controller..*.*(..))")
-    public void doAccessCheck(JoinPoint joinPoint) {
+    public void doAccessCheck(JoinPoint jp) {
         logger.error("before");
-        System.out.println("Before :" + joinPoint.getArgs()[0]);
+        logger.error("Before :" + jp.getArgs()[0].getClass());
     }
-
+    
 }
