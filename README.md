@@ -1,6 +1,4 @@
 brew
 ====
 
-brew
-
-FUCK GFW!
+酒仙
