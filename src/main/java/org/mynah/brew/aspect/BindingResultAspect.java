@@ -16,7 +16,7 @@ public class BindingResultAspect {
     public void doAccessCheck(JoinPoint jp) {
         //TODO 测试参数
         logger.error("before");
-        logger.error("Before :" + jp.getArgs()[0].getClass());
+        logger.error("Before :" + jp.getArgs());
     }
 
 }
