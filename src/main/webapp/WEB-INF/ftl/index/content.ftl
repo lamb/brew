@@ -21,9 +21,6 @@ select * from user-table where id in (x, y, z);
 	</pre>
     </div>
     <div class="span3">
-    	<#if user??>
-    	<#include "user.ftl">
-    	</#if>
     </div>
   </div>
 </div>

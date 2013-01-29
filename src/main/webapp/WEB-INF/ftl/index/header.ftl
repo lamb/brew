@@ -8,16 +8,11 @@
 					<li><a href="#about">About</a></li>
 					<li><a href="#contact">Contact</a></li>
 					<li class="divider-vertical"></li>
-					<#if user??>
-						<li><a href="${contextPath}/setting">设置</a></li>
-						<li><a href="${contextPath}/signout">退出</a></li>
-					<#else>
 					<form id="signForm" class="navbar-form pull-right" action="${contextPath}/signin" method="post">
 		              <input class="span2" type="text" name="username" placeholder="用户名" rel="popover" data-placement="bottom" />
 		              <input class="span2" type="password" name="password" placeholder="密码" rel="popover" data-placement="bottom" />
 		              <input type="submit" class="btn" value="登陆" />
 		            </form>
-		            </#if>
 	            </ul>
 			</div>
 			<!--/.nav-collapse -->

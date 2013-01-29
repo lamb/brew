@@ -1,4 +1,4 @@
-<#include "macro-head.ftl">
+<#include "/macro-head.ftl">
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,8 +8,8 @@
 </@head>
 </head>
 <body>
-	<#include "header.ftl">
-	<#include "content.ftl">
-	<#include "footer.ftl">
+	<#include "/index/header.ftl">
+	<#include "/index/content.ftl">
+	<#include "/footer.ftl">
 </body>
 </html>
