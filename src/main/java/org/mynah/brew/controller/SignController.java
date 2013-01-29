@@ -24,6 +24,12 @@ public class SignController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping(value = "/signin", method = RequestMethod.GET)
+    public String signin() {
+        System.out.println("signin end");
+        return "signin/page";
+    }
+
     @RequestMapping(value = "/signin", method = RequestMethod.POST)
     public String signin(@Valid User user, BindingResult result, HttpServletResponse response) throws NoSuchAlgorithmException {
         System.out.println("signin start");
@@ -42,7 +48,7 @@ public class SignController {
             }
         }
         System.out.println("signin end");
-        return "redirect:/";
+        return "redirect:/home";
     }
 
     @RequestMapping(value = "/cookie", method = RequestMethod.GET)
