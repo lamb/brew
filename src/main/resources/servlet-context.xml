@@ -22,7 +22,9 @@
 	<mvc:default-servlet-handler />
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/**" />
+			<mvc:mapping path="/home/**" />
+			<mvc:mapping path="/tree/**" />
+			<mvc:mapping path="/cadre/**" />
 			<bean class="org.mynah.brew.interceptor.SigninInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

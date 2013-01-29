@@ -22,6 +22,8 @@ public class SigninInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        logger.debug(request.getServletPath() + "preHandle-----SigninInterceptor Start!");
+        boolean flag = false;
         HttpSession session = request.getSession();
         Object object = session.getAttribute(Constants.SESSION_USER);
         if (null == object) {
@@ -33,10 +35,14 @@ public class SigninInterceptor extends HandlerInterceptorAdapter {
                 String password = values[1];
                 if (userService.verifyPassword(email, password)) {
                     session.setAttribute(Constants.SESSION_USER, userService.get(email));
+                    flag = true;
                 }
             }
         }
-        return super.preHandle(request, response, handler);
+        if (!flag) {
+            response.sendRedirect("signin");
+        }
+        return flag;
     }
 
 }
