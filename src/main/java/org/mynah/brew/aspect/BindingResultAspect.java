@@ -14,7 +14,7 @@ public class BindingResultAspect {
 
     @Before("execution(* org.mynah.brew.controller..*.*(..))")
     public void doAccessCheck(JoinPoint jp) {
-        //TODO 测试参数
+        //TODO 把BindingResult中有错误信息的都转向错误页面
         logger.error("before");
         logger.error("Before :" + jp.getArgs());
     }
