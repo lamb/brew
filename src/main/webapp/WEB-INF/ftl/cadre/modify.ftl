@@ -7,22 +7,58 @@
 <meta name="description" content=""/>
 </@head>
 <body>
-	<form id="project" class="form-horizontal" action="${contextPath}/project/${project.id}/modify" method="POST">
+	<form class="form-horizontal" action="${contextPath}/cadre/${cadre.id}/modify" method="POST">
 	  <div class="control-group">
-	    <label class="control-label" for="name">项目名称</label>
+	    <label class="control-label">姓名</label>
 	    <div class="controls">
-	      <input type="text" id="name" name="name" placeholder="项目名称" required maxlength="100" value="${project.name}"/>
+	      <input type="text" name="name"  required maxlength="100" value="${cadre.name}"/>
 	    </div>
 	  </div>
 	  <div class="control-group">
-	    <label class="control-label" for="abbr">英文缩写</label>
+	    <label class="control-label">部门</label>
 	    <div class="controls">
-	      <input type="text" id="abbr" name="abbr" placeholder="英文缩写" required maxlength="100" value="${project.abbr}"/>
+	      <input type="text" name="department" required maxlength="100" value="${cadre.department}"/>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label">性别</label>
+	    <div class="controls">
+	      <input type="text" name="gender" required maxlength="100" value="${cadre.gender}"/>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label">生日</label>
+	    <div class="controls">
+	      <input type="text" name="birthday"  required maxlength="100" value="${cadre.birthday}"/>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label">名族</label>
+	    <div class="controls">
+	      <input type="text" name="nation" required maxlength="100" value="${cadre.nation}"/>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label">籍贯</label>
+	    <div class="controls">
+	      <input type="text" name="birthplace" required maxlength="100" value="${cadre.birthplace}"/>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label">政治面貌</label>
+	    <div class="controls">
+	      <input type="text" name="appearance" required maxlength="100" value="${cadre.appearance}"/>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label">政治面貌</label>
+	    <div class="controls">
+	      <input type="text" name="appearance" required maxlength="100" value="${cadre.appearance}"/>
 	    </div>
 	  </div>
 	  <div class="control-group">
 	    <div class="controls">
-	      <button id="project" type="submit" class="btn">保存</button>
+	      <button type="submit" class="btn">保存</button>
 	    </div>
 	  </div>
 	</form>
