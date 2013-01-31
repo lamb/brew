@@ -26,7 +26,7 @@ public class SignController {
 
     @RequestMapping(value = "/signin", method = RequestMethod.GET)
     public String signin() {
-        System.out.println("signin end");
+        System.out.println("to signin");
         return "signin/page";
     }
 
