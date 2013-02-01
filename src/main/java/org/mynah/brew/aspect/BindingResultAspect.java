@@ -13,9 +13,8 @@ public class BindingResultAspect {
     protected final Log logger = LogFactory.getLog(getClass());
 
     @Before("execution(* org.mynah.brew.controller..*.*(..))")
-    public void doAccessCheck(JoinPoint jp) {
-        //TODO 把BindingResult中有错误信息的都转向错误页面
-        logger.error("before");
+    public void valid(JoinPoint jp) {
+        // TODO 把BindingResult中有错误信息的都转向错误页面
         logger.error("Before :" + jp.getArgs());
     }
 
