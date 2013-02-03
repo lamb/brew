@@ -1,6 +1,7 @@
 package org.mynah.brew.controller;
 
 import java.util.List;
+import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.mynah.brew.model.Cadre;
 import org.mynah.brew.service.CadreService;
+import org.mynah.brew.service.DepartmentService;
 
 @Controller
 @RequestMapping("/cadre")
@@ -19,6 +21,9 @@ public class CadreController {
 
     @Autowired
     private CadreService cadreService;
+    
+    @Autowired
+    private DepartmentService departmentService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String list(Model model) {
@@ -57,6 +62,8 @@ public class CadreController {
     public String modify(@PathVariable int id, Cadre param, Model model) {
         Cadre cadre = cadreService.queryForObject(param, Cadre.class);
         model.addAttribute("cadre", cadre);
+        Map<String, Object> departments = departmentService.query();
+        model.addAttribute("departments", departments);
         return "cadre/modify";
     }
 
