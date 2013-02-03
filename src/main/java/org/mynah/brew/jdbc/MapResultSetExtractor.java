@@ -17,14 +17,15 @@ public class MapResultSetExtractor implements ResultSetExtractor<Map<String, Obj
         rs.last();
         int rowsExpected = rs.getRow();
         Map<String, Object> results = new HashMap<String, Object>(rowsExpected);
+        rs.first();
         while (rs.next()) {
             ResultSetMetaData rsmd = rs.getMetaData();
             int columnCount = rsmd.getColumnCount();
             if (columnCount < 2) {
                 throw new IncorrectColumnSizeDataAccessException(2, columnCount);
             }
-            String key = rs.getString(0);
-            Object value = JdbcUtils.getResultSetValue(rs, 1);
+            String key = rs.getString(1);
+            Object value = JdbcUtils.getResultSetValue(rs, 2);
             results.put(key, value);
         }
         return results;
