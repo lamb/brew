@@ -1,7 +1,6 @@
 package org.mynah.brew.jdbc;
 
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,20 +14,21 @@ public class MapResultSetExtractor implements ResultSetExtractor<Map<String, Obj
     @Override
     public Map<String, Object> extractData(ResultSet rs) throws SQLException, DataAccessException {
         rs.last();
-        int rowsExpected = rs.getRow();
-        Map<String, Object> results = new HashMap<String, Object>(rowsExpected);
-        rs.first();
-        while (rs.next()) {
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int columnCount = rsmd.getColumnCount();
-            if (columnCount < 2) {
-                throw new IncorrectColumnSizeDataAccessException(2, columnCount);
+        int rows = rs.getRow();
+        Map<String, Object> results = null;
+        if (rows > 0) {
+            results = new HashMap<String, Object>(rows);
+            rs.first();
+            int columnCount = rs.getMetaData().getColumnCount();
+            int expectedSize = 2;
+            if (columnCount != expectedSize) {
+                throw new IncorrectColumnSizeDataAccessException(expectedSize, columnCount);
             }
-            String key = rs.getString(1);
-            Object value = JdbcUtils.getResultSetValue(rs, 2);
-            results.put(key, value);
+            results.put(rs.getString(1), JdbcUtils.getResultSetValue(rs, 2));
+            while (rs.next()) {
+                results.put(rs.getString(1), JdbcUtils.getResultSetValue(rs, 2));
+            }
         }
         return results;
     }
-
 }
