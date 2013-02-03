@@ -17,7 +17,14 @@
 	  <div class="control-group">
 	    <label class="control-label">部门</label>
 	    <div class="controls">
-	      <input type="text" name="department" required maxlength="100" value="${cadre.department}"/>
+	    ${departments[cadre.department?c]}
+        <#if departments?exists>
+	    <select name="department">
+        <#list departments?keys as key>
+			<option value="${key}" >${departments[key]}</option>
+	    </#list>
+		</select>
+        </#if>
 	    </div>
 	  </div>
 	  <div class="control-group">
