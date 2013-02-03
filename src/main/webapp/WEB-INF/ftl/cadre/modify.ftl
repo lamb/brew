@@ -51,9 +51,51 @@
 	    </div>
 	  </div>
 	  <div class="control-group">
-	    <label class="control-label">政治面貌</label>
+	    <label class="control-label">学历</label>
 	    <div class="controls">
-	      <input type="text" name="appearance" required maxlength="100" value="${cadre.appearance}"/>
+	      <input type="text" name="education" required maxlength="100" value="${cadre.education}"/>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label">毕业院校</label>
+	    <div class="controls">
+	      <input type="text" name="graduate" required maxlength="100" value="${cadre.graduate}"/>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label">专业</label>
+	    <div class="controls">
+	      <input type="text" name="major" required maxlength="100" value="${cadre.major}"/>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label">研究方向</label>
+	    <div class="controls">
+	      <input type="text" name="research" required maxlength="100" value="${cadre.research}"/>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label">电话</label>
+	    <div class="controls">
+	      <input type="text" name="phone" required maxlength="100" value="${cadre.phone}"/>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label">邮箱</label>
+	    <div class="controls">
+	      <input type="text" name="email" required maxlength="100" value="${cadre.email}"/>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label">邮编</label>
+	    <div class="controls">
+	      <input type="text" name="zipcode" required maxlength="100" value="${cadre.zipcode}"/>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label">地址</label>
+	    <div class="controls">
+	      <input type="text" name="address" required maxlength="100" value="${cadre.address}"/>
 	    </div>
 	  </div>
 	  <div class="control-group">
