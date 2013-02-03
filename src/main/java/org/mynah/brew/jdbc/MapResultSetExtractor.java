@@ -2,7 +2,7 @@ package org.mynah.brew.jdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import org.mynah.brew.jdbc.exception.IncorrectColumnSizeDataAccessException;
 import org.springframework.dao.DataAccessException;
@@ -17,7 +17,7 @@ public class MapResultSetExtractor implements ResultSetExtractor<Map<String, Obj
         int rows = rs.getRow();
         Map<String, Object> results = null;
         if (rows > 0) {
-            results = new HashMap<String, Object>(rows);
+            results = new LinkedHashMap<String, Object>(rows);
             rs.first();
             int columnCount = rs.getMetaData().getColumnCount();
             int expectedSize = 2;
