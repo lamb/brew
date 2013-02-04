@@ -15,6 +15,7 @@ public class BindingResultAspect {
     @Before("execution(* org.mynah.brew.controller..*.*(..))")
     public void valid(JoinPoint jp) {
         // TODO 把BindingResult中有错误信息的都转向错误页面
+        // 这个咋写呢...要想想....今天忙的没时间
         logger.error("Before :" + jp.getArgs());
     }
 
