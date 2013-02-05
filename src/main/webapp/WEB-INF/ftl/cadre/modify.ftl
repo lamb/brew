@@ -21,7 +21,7 @@
         <#if departments?exists>
 	    <select name="department">
         <#list departments?keys as key>
-			<option value="${key}" >${departments[key]}</option>
+			<option value="${key}" >${departments[key]}-${key==(cadre.department?c)}-${(1==2)?string}</option>
 	    </#list>
 		</select>
         </#if>
