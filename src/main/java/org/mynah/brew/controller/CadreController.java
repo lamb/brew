@@ -1,16 +1,25 @@
 package org.mynah.brew.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
+
+import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.SimpleFormController;
 import org.mynah.brew.model.Cadre;
 import org.mynah.brew.service.CadreService;
 import org.mynah.brew.service.DepartmentService;
@@ -18,10 +27,11 @@ import org.mynah.brew.service.DepartmentService;
 @Controller
 @RequestMapping("/cadre")
 public class CadreController {
-
+    @Autowired
+    private PropertyEditorRegistrar customPropertyEditorRegistrar;
     @Autowired
     private CadreService cadreService;
-    
+
     @Autowired
     private DepartmentService departmentService;
 
@@ -92,4 +102,12 @@ public class CadreController {
         return "redirect:../";
     }
 
+    // @InitBinder
+    // public void initBinder(WebDataBinder binder) {
+    // CustomDateEditor editor = new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true);
+    // binder.registerCustomEditor(Date.class, editor);
+    // }
+    protected void initBinder(ServletRequestDataBinder binder) throws Exception {
+        this.customPropertyEditorRegistrar.registerCustomEditors(binder);
+    }
 }

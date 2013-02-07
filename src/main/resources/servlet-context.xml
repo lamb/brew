@@ -18,7 +18,14 @@
 	<context:component-scan base-package="org.mynah.brew">
 		<context:include-filter expression="org.aspectj.lang.annotation.Aspect" type="annotation" />
 	</context:component-scan>
-
+	<bean id="customPropertyEditorRegistrar" class="org.mynah.brew.bind.CustomPropertyEditorRegistrar" />
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="propertyEditorRegistrars">
+			<list>
+				<ref bean="customPropertyEditorRegistrar" />
+			</list>
+		</property>
+	</bean>
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
 	<mvc:interceptors>
@@ -68,21 +75,5 @@
 	</bean>
 
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
-
-	<bean id="dateEditor" class="org.springframework.beans.propertyeditors.CustomDateEditor">
-		<constructor-arg>
-			<bean class="java.text.SimpleDateFormat">
-				<constructor-arg value="yyyy-MM-dd" />
-			</bean>
-		</constructor-arg>
-		<constructor-arg value="true" />
-	</bean>
-	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
-		<property name="customEditors">
-			<map>
-				<entry key="java.util.Date" value="org.springframework.beans.propertyeditors.CustomDateEditor"/>
-			</map>
-		</property>
-	</bean>
 
 </beans>
