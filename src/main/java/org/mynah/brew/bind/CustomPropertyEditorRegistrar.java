@@ -16,5 +16,6 @@ public class CustomPropertyEditorRegistrar implements PropertyEditorRegistrar {
     public void registerCustomEditors(PropertyEditorRegistry registry) {
         registry.registerCustomEditor(java.util.Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
         logger.debug("registerCustomEditor Date Done!");
+        //TODO 换成WebDataBinder
     }
 }
