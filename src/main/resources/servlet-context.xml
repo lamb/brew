@@ -69,7 +69,7 @@
 
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 
-	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="cacheSeconds" value="0" />
 		<property name="webBindingInitializer">
 			<bean class="org.mynah.brew.bind.CustomWebBindingInitializer" />
