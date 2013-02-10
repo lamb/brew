@@ -26,13 +26,13 @@ public class Cadre {
     private String major;
     @Size(max = 200, message = "研究方向最大长度为200")
     private String research;
-    @Size(max = 100, message = "电话最大长度为200")
+    @Size(max = 100, message = "电话最大长度为100")
     private String phone;
-    @Size(max = 100, message = "电子邮件最大长度为200")
+    @Size(max = 100, message = "电子邮件最大长度为100")
     private String email;
-    @Size(max = 6, message = "邮编最大长度为200")
+    @Size(max = 6, message = "邮编最大长度为6")
     private String zipcode;
-    @Size(max = 300, message = "地址最大长度为200")
+    @Size(max = 300, message = "地址最大长度为300")
     private String address;
 
     public Integer getId() {
