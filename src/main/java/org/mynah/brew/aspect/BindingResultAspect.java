@@ -6,6 +6,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
 
 @Aspect
 public class BindingResultAspect {
@@ -15,10 +16,10 @@ public class BindingResultAspect {
     public static final String RESULT = "result";
 
     @Around("execution(* org.mynah.brew.controller..*.*(..)) && args (..,result)")
-    public Object valid(ProceedingJoinPoint pjp, BindException result) throws Throwable {
-        logger.debug("result=" + result);
+    public Object valid(ProceedingJoinPoint pjp, BindingResult result) throws Throwable {
+        logger.debug("result.hasErrors()=" + result.hasErrors() + ":result=" + result);
         if (result.hasErrors()) {
-            throw result;
+            throw new BindException(result);
         } else {
             return pjp.proceed();
         }
