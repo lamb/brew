@@ -18,6 +18,9 @@
 		<pre>
 		    <code>
 ${result}
+<#list result.allErrors as error >
+	${error}
+</#list>
 		    </code>
 		</pre>
 	    </div>

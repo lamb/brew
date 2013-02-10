@@ -79,6 +79,6 @@
 	</bean>
 
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
-	<bean id="customPropertyEditorRegistrar" class="com.foo.editors.spring.CustomPropertyEditorRegistrar" />
+	<bean id="customPropertyEditorRegistrar" class="org.mynah.brew.bind.CustomPropertyEditorRegistrar" />
 
 </beans>
