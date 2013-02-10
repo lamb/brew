@@ -2,9 +2,10 @@ package org.mynah.brew.aspect;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.springframework.validation.BindingResult;
 
 @Aspect
 public class BindingResultAspect {
@@ -12,11 +13,16 @@ public class BindingResultAspect {
     /** Logger available to subclasses */
     protected final Log logger = LogFactory.getLog(getClass());
 
-    @Before("execution(* org.mynah.brew.controller..*.*(..))")
-    public void valid(JoinPoint jp) {
-        // TODO 把BindingResult中有错误信息的都转向错误页面
-        // 这个咋写呢...要想想....今天忙的没时间
-        logger.error("Before :" + jp.getArgs());
+    @Around("execution(* org.mynah.brew.controller..*.*(..)) && args (..,result)")
+    public String valid(ProceedingJoinPoint pjp, BindingResult result) throws Throwable {
+        logger.debug("result=" + result);
+        String value = null;
+        if (result.hasErrors()) {
+            value = "result";
+        } else {
+            value = (String) pjp.proceed();
+        }
+        return value;
     }
 
 }

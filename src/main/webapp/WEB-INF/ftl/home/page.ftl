@@ -8,7 +8,7 @@
 </@head>
 </head>
 <body>
-	<#include "/home/header.ftl">
+	<#include "/header.ftl">
 	<#include "/home/content.ftl">
 	<#include "/footer.ftl">
 </body>
