@@ -20,8 +20,14 @@
 	</context:component-scan>
 
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<!--线程安全的访问session -->
+		<property name="synchronizeOnSession" value="true" />
 		<property name="webBindingInitializer">
-			<bean class="org.mynah.brew.bind.CustomWebBindingInitializer" />
+			<bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+				<property name="validator" ref="validator" />
+				<property name="propertyEditorRegistrar" ref="customPropertyEditorRegistrar">
+				</property>
+			</bean>
 		</property>
 	</bean>
 	<mvc:annotation-driven />
@@ -73,5 +79,6 @@
 	</bean>
 
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	<bean id="customPropertyEditorRegistrar" class="com.foo.editors.spring.CustomPropertyEditorRegistrar" />
 
 </beans>
