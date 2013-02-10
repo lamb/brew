@@ -18,14 +18,7 @@
 	<context:component-scan base-package="org.mynah.brew">
 		<context:include-filter expression="org.aspectj.lang.annotation.Aspect" type="annotation" />
 	</context:component-scan>
-	<bean id="customPropertyEditorRegistrar" class="org.mynah.brew.bind.CustomPropertyEditorRegistrar" />
-	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
-		<property name="propertyEditorRegistrars">
-			<list>
-				<ref bean="customPropertyEditorRegistrar" />
-			</list>
-		</property>
-	</bean>
+
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
 	<mvc:interceptors>
@@ -76,4 +69,10 @@
 
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
 
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="cacheSeconds" value="0" />
+		<property name="webBindingInitializer">
+			<bean class="org.mynah.brew.bind.CustomWebBindingInitializer" />
+		</property>
+	</bean>
 </beans>
