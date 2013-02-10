@@ -6,8 +6,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
+import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,17 +44,8 @@ public class CadreController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(@Valid Cadre cadre, BindingResult result) {
-        if (result.hasErrors()) {
-            List<ObjectError> errors = result.getAllErrors();
-            for (ObjectError error : errors) {
-                System.out.println(error.getDefaultMessage());
-            }
-            return "redirect:";
-        } else {
-            return "redirect:" + cadreService.save(cadre);
-        }
-
+    public String create(@Valid Cadre cadre, BindException result) {
+        return "redirect:" + cadreService.save(cadre);
     }
 
     @RequestMapping(value = "/{id}/modify", method = RequestMethod.GET)
@@ -68,21 +58,12 @@ public class CadreController {
     }
 
     @RequestMapping(value = "/{id}/modify", method = RequestMethod.POST)
-    public String modify(@PathVariable int id, @Valid Cadre cadre, BindingResult result) {
-        if (result.hasErrors()) {
-            List<ObjectError> errors = result.getAllErrors();
-            for (ObjectError error : errors) {
-                System.out.println(error.getDefaultMessage());
-            }
-            return "redirect:";
-        } else {
-            cadre.setId(id);
-            Cadre where = new Cadre();
-            where.setId(id);
-            cadreService.update(where, cadre);
-            return "redirect:";
-        }
-
+    public String modify(@PathVariable int id, @Valid Cadre cadre, BindException result) {
+        cadre.setId(id);
+        Cadre where = new Cadre();
+        where.setId(id);
+        cadreService.update(where, cadre);
+        return "redirect:";
     }
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
