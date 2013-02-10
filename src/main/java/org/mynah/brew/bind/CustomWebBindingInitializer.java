@@ -13,11 +13,11 @@ public class CustomWebBindingInitializer implements WebBindingInitializer {
 
     /** Logger available to subclasses */
     protected final Log logger = LogFactory.getLog(getClass());
+    public static final String DATE_PATTERN = "yyyy-MM-dd";
 
     @Override
     public void initBinder(WebDataBinder binder, WebRequest request) {
-        binder.registerCustomEditor(java.util.Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
-        logger.debug("registerCustomEditor Date Done!");
+        binder.registerCustomEditor(java.util.Date.class, new CustomDateEditor(new SimpleDateFormat(DATE_PATTERN), true));
     }
 
 }
