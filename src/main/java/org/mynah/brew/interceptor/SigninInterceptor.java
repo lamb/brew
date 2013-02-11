@@ -22,7 +22,7 @@ public class SigninInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        //TODO 这个地方有点问题
+        //TODO 这个地方有点问题!
         logger.debug(request.getServletPath() + "preHandle-----SigninInterceptor Start!");
         boolean flag = true;
         HttpSession session = request.getSession();
