@@ -18,5 +18,12 @@ public final class CookieUtil {
         }
         return value;
     }
+    
+    public static Cookie newCookie(String username, String password) {
+        Cookie cookie = new Cookie(Constants.COOKIE_SU, username + ":" + password);
+        cookie.setPath("/");
+        cookie.setMaxAge(Integer.MAX_VALUE);
+        return cookie;
+    }
 
 }

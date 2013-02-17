@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +18,7 @@ import org.apache.commons.logging.LogFactory;
 import org.mynah.brew.model.User;
 import org.mynah.brew.service.UserService;
 import org.mynah.brew.util.Constants;
+import org.mynah.brew.util.CookieUtil;
 import org.mynah.brew.util.CryptoUtil;
 
 @Controller
@@ -36,13 +36,14 @@ public class SignController {
     }
 
     @RequestMapping(value = "/signin", method = RequestMethod.POST)
-    public String signin(@Valid User user, BindingResult result, HttpServletResponse response) throws NoSuchAlgorithmException {
+    public String signin(@Valid User user, BindingResult result, HttpServletRequest request, HttpServletResponse response) throws NoSuchAlgorithmException {
+        HttpSession session = request.getSession();
         user.setPassword(CryptoUtil.digest(user.getPassword(), userService.getSalt(user.getUsername())));
-        if (userService.verifyPassword(user.getUsername(), user.getPassword())) {
-            Cookie cookie = new Cookie(Constants.COOKIE_SU, user.getUsername() + ":" + user.getPassword());
-            cookie.setPath("/");
-            cookie.setMaxAge(Integer.MAX_VALUE);
-            response.addCookie(cookie);
+        String username = user.getUsername();
+        String password = user.getPassword();
+        if (userService.verifyPassword(username, password)) {
+            session.setAttribute(Constants.SESSION_USER, userService.get(user.getUsername()));
+            response.addCookie(CookieUtil.newCookie(username, password));
         }
         return "redirect:/home";
     }
@@ -57,21 +58,19 @@ public class SignController {
             cookies[i].setMaxAge(-1);
             response.addCookie(cookies[i]);
         }
-        System.out.println("signout");
         return "redirect:";
     }
 
     @RequestMapping(value = "/signin/callback", method = RequestMethod.GET)
-    public String signin(@CookieValue("SU") String su, HttpServletResponse response, String callback) throws NoSuchAlgorithmException {
+    public String signin(@CookieValue("SU") String su, String callback, HttpServletRequest request, HttpServletResponse response) throws NoSuchAlgorithmException {
         logger.debug("callback=" + callback);
+        HttpSession session = request.getSession();
         String[] values = su.split(":");
         String username = values[0];
         String password = values[1];
         if (userService.verifyPassword(username, password)) {
-            Cookie cookie = new Cookie(Constants.COOKIE_SU, username + ":" + password);
-            cookie.setPath("/");
-            cookie.setMaxAge(Integer.MAX_VALUE);
-            response.addCookie(cookie);
+            session.setAttribute(Constants.SESSION_USER, userService.get(username));
+            response.addCookie(CookieUtil.newCookie(username, password));
         }
         return "redirect:" + callback;
     }
