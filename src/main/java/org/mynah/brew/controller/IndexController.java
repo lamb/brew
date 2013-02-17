@@ -27,10 +27,10 @@ public class IndexController {
             String su = CookieUtil.getValue(cookies, Constants.COOKIE_SU);
             if (null != su) {
                 String[] values = su.split(":");
-                String email = values[0];
+                String username = values[0];
                 String password = values[1];
-                if (userService.verifyPassword(email, password)) {
-                    session.setAttribute(Constants.SESSION_USER, userService.get(email));
+                if (userService.verifyPassword(username, password)) {
+                    session.setAttribute(Constants.SESSION_USER, userService.get(username));
                     view = "redirect:/home";
                 }
             }
