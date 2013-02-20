@@ -13,7 +13,6 @@ public class BindingResultAspect {
 
     /** Logger available to subclasses */
     protected final Log logger = LogFactory.getLog(getClass());
-    public static final String RESULT = "result";
 
     @Around("execution(* org.mynah.brew.controller..*.*(..)) && args (..,result)")
     public Object valid(ProceedingJoinPoint pjp, BindingResult result) throws Throwable {
