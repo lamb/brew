@@ -3,8 +3,8 @@ package org.mynah.brew.jdbc;
 import java.beans.PropertyDescriptor;
 import java.util.List;
 import javax.sql.DataSource;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.PropertyAccessorFactory;
@@ -20,7 +20,7 @@ import org.springframework.jdbc.support.KeyHolder;
 public class Template extends JdbcTemplate {
 
     /** Logger available to subclasses */
-    protected final Log logger = LogFactory.getLog(getClass());
+    protected final Logger logger = LoggerFactory.getLogger(getClass());
     
     public static final String CLASS = "class";
     public static final String SPACE = " ";
