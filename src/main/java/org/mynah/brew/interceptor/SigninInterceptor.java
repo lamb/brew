@@ -1,7 +1,5 @@
 package org.mynah.brew.interceptor;
 
-import java.net.URLEncoder;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,13 +15,13 @@ public class SigninInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.debug(request.getServletPath() + "preHandle-----SigninInterceptor Start!");
+        logger.debug(request.getServletPath() + "[]preHandle-----SigninInterceptor Start!");
         boolean flag = true;
         HttpSession session = request.getSession();
         Object object = session.getAttribute(Constants.SESSION_USER);
         if (null == object) {
             flag = false;
-            response.sendRedirect("signin/callback?callback=" + URLEncoder.encode(request.getServletPath(), Constants.ENCODING));
+            response.sendRedirect("/signin");
         }
         return flag;
     }
