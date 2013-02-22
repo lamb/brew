@@ -4,7 +4,7 @@
 	<artifactId>brew</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1</version>
-	<name>mist</name>
+	<name>brew</name>
 	<url>http://brew.mynah.org</url>
 	<properties>
 		<finalName>brew</finalName>
