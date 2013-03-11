@@ -28,7 +28,7 @@ public class Template extends JdbcTemplate {
     public static final String RIGHT_BRACKET = ")";
     public static final String COLON = ":";
     public static final String COMMA = ",";
-    public static final String INSERT = "insert";
+    public static final String INSERT = "insert into";
     public static final String VALUES = "values";
     public static final String UNDERLINE = "_";
     public static final String SELECT = "select";
