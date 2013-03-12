@@ -5,8 +5,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.mynah.brew.jdbc.MapResultSetExtractor;
 import org.mynah.brew.jdbc.Template;
+import org.mynah.brew.jdbc.extractor.MapResultSetExtractor;
 import org.mynah.brew.model.Department;
 import org.mynah.brew.repository.IDepartmentRepository;
 

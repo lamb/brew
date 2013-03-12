@@ -1,4 +1,4 @@
-package org.mynah.brew.jdbc;
+package org.mynah.brew.jdbc.extractor;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
